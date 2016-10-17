@@ -9,10 +9,14 @@ def index():
 
 @app.route('/results')
 def results():
-    gif = request.values.get('gif')
-    g = giphypop.Giphy()
-    results = g.search(gif)
-    return render_template('results.html', gif=gif, results=results)
+    try:
+        gif = request.values.get('gif')
+        g = giphypop.Giphy()
+        results = g.search(gif)
+        return render_template('results.html', gif=gif, results=results)
+    except AssertionError:
+        error = "Please try your search again."
+        return render_template('index.html', error=error)
 
 @app.route('/about')
 def about():
