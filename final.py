@@ -9,13 +9,10 @@ def index():
 
 @app.route('/results')
 def results():
-    g = giphypop.Giphy()
     gif = request.values.get('gif')
+    g = giphypop.Giphy()
     results = g.search(gif)
-    for result in results:
-        media_url = result.media_url
-        result_url = result.url
-    return render_template('results.html', gif=gif, results=results, media_url=media_url, result_url=result_url)
+    return render_template('results.html', gif=gif, results=results)
 
 @app.route('/about')
 def about():
