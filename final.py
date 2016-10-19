@@ -14,9 +14,16 @@ def results():
         gif = request.values.get('gif')
         g = giphypop.Giphy()
         results = g.search(gif)
-        return render_template('results.html', gif=gif, results=results)
+        if len(list(results)) > 0:
+            git = request.values.get('gif')
+            g = giphypop.Giphy()
+            results = g.search(gif)
+            return render_template('results.html', gif=gif, results=results)
+        else:
+            error = "No results found. Please try your search again."
+            return render_template('index.html', error=error)
     except AssertionError:
-        error = "Please try your search again."
+        error = "No search term. Please try your search again."
         return render_template('index.html', error=error)
 
 @app.route('/about')
