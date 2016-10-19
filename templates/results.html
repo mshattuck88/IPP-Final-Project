@@ -7,7 +7,7 @@
     </head>
     <body>
         
-        <!-- Navigation Bar -->
+        <!-- Navigation Bar, include link to github -->
         <nav class="navbar navbar-static-top navbar-dark bg-inverse">
             <div class="container">
                 <a class="navbar-brand" href="/">Giphy Search</a>
@@ -25,14 +25,15 @@
             </div>
         </nav>
         
-        <!-- Jumbotron -->
+        <!-- Jumbotron, pull search term into header-->
         <div class="jumbotron">
             <div class="container">
                 <h1>GIFs tagged with '{{gif}}'</h1>
                 <a href="/">Back to search</a>
             </div>
         </div>
-
+        
+        <!-- Loop through and display results with fixed width-->
         <ul>
             {% for result in results %}
                 <a href={{result.url}} target="_blank">
