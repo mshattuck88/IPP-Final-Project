@@ -4,10 +4,12 @@ app = Flask(__name__)
 import giphypop
 import os
 
+# Set up an index page
 @app.route('/')
 def index():
     return render_template('index.html')
 
+# Set up a results page that will use giphypop to find requested gifs and display error message if no gif is requested
 @app.route('/results')
 def results():
     try:
@@ -26,6 +28,7 @@ def results():
         error = "No search term. Please try your search again."
         return render_template('index.html', error=error)
 
+# Set up an about page
 @app.route('/about')
 def about():
     return render_template('about.html')
